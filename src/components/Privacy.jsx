@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ShieldCheck, Server, Cookie, UserCheck } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const items = [
   {
@@ -38,7 +39,7 @@ export default function Privacy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-slate-900"
+            className="text-4xl font-bold text-primary-dark"
           >
             I tuoi dati sono al sicuro
           </motion.h2>
@@ -66,10 +67,10 @@ export default function Privacy() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="bg-slate-50 rounded-2xl p-6 border border-slate-200"
               >
-                <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center mb-4 border border-slate-200">
-                  <Icon size={17} className="text-slate-600" />
+                <div className="w-9 h-9 bg-logo-light rounded-lg flex items-center justify-center mb-4 border border-logo-lime/30">
+                  <Icon size={17} className="text-primary" />
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-1.5 text-sm">{item.title}</h3>
+                <h3 className="font-semibold text-primary-dark mb-1.5 text-sm">{item.title}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
               </motion.div>
             )
@@ -83,9 +84,9 @@ export default function Privacy() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-center mt-8"
         >
-          <a href="mailto:effe2snc@gmail.com" className="text-sm text-slate-500 hover:text-slate-800 font-medium transition-colors underline underline-offset-4">
+          <Link to="/privacy" className="text-sm text-slate-500 hover:text-slate-800 font-medium transition-colors underline underline-offset-4">
             Leggi la privacy policy →
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

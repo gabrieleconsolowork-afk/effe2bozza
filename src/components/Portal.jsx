@@ -11,10 +11,10 @@ const bullets = [
 ]
 
 const orders = [
-  { code: 'CAM-2026-0042', date: '28 feb', status: 'Confermato', color: 'bg-green-50 text-green-700' },
-  { code: 'CAM-2026-0041', date: '25 feb', status: 'In lavorazione', color: 'bg-lime-50 text-lime-700' },
-  { code: 'CAM-2026-0040', date: '20 feb', status: 'Spedito', color: 'bg-indigo-50 text-indigo-700' },
-  { code: 'CAM-2026-0039', date: '15 feb', status: 'Consegnato', color: 'bg-green-50 text-green-700' },
+  { code: 'CAM-2026-0042', date: '28 feb', status: 'Confermato', color: 'bg-logo-light text-primary' },
+  { code: 'CAM-2026-0041', date: '25 feb', status: 'In lavorazione', color: 'bg-logo-light text-effe-medium' },
+  { code: 'CAM-2026-0040', date: '20 feb', status: 'Spedito', color: 'bg-logo-light text-effe-dark' },
+  { code: 'CAM-2026-0039', date: '15 feb', status: 'Consegnato', color: 'bg-logo-light text-primary' },
 ]
 
 export default function Portal() {
@@ -38,9 +38,9 @@ export default function Portal() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl font-bold text-slate-900 leading-tight"
+              className="text-4xl font-bold text-primary-dark leading-tight"
             >
-              Tutto sotto controllo, in un unico posto
+              Il portale EFFE2: in arrivo
             </motion.h2>
 
             <motion.p
@@ -50,7 +50,7 @@ export default function Portal() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="text-slate-500 leading-relaxed"
             >
-              Il portale EFFE2 ti permette di gestire tutti i tuoi ordini, comunicare con il team, e avere sempre sotto controllo lo stato dei lavori.
+              Stiamo costruendo uno spazio digitale dove potrai gestire ordini, comunicare con il team e seguire ogni lavorazione in tempo reale. Per ora ci trovi su WhatsApp e email, stessa velocità, stesso team.
             </motion.p>
 
             <motion.ul
@@ -62,7 +62,7 @@ export default function Portal() {
             >
               {bullets.map((b) => (
                 <li key={b} className="flex items-center gap-3 text-sm text-slate-700">
-                  <CheckCircle2 size={16} className="text-green-600 shrink-0" />
+                  <CheckCircle2 size={16} className="text-primary shrink-0" />
                   {b}
                 </li>
               ))}
@@ -80,7 +80,7 @@ export default function Portal() {
               <div className="flex items-center gap-1.5 px-4 py-3 bg-slate-50 border-b border-slate-100">
                 <span className="w-3 h-3 rounded-full bg-red-300" />
                 <span className="w-3 h-3 rounded-full bg-yellow-300" />
-                <span className="w-3 h-3 rounded-full bg-green-300" />
+                <span className="w-3 h-3 rounded-full bg-effe-medium" />
               </div>
               <div className="p-5">
                 <p className="text-sm font-semibold text-slate-700 mb-4">I tuoi ordini</p>

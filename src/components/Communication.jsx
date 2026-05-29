@@ -1,36 +1,36 @@
 import { motion } from 'framer-motion'
-import { MessageCircle, Bell, Mail } from 'lucide-react'
+import { MessageCircle, Phone, Mail } from 'lucide-react'
 
 const cards = [
   {
     icon: MessageCircle,
-    title: 'WhatsApp integrato',
-    desc: 'Ricevi aggiornamenti sugli ordini direttamente su WhatsApp. Conferme, stati, avvisi — tutto nel tuo telefono.',
-    color: 'bg-green-50',
-    iconColor: 'text-green-700',
-    border: 'border-green-100',
+    title: 'WhatsApp',
+    desc: 'Mandaci la scansione, fai una domanda, chiedi un aggiornamento. Direttamente su WhatsApp. Rispondiamo noi.',
+    color: 'bg-logo-light',
+    iconColor: 'text-effe-dark',
+    border: 'border-logo-lime/40',
   },
   {
-    icon: Bell,
-    title: 'Notifiche in tempo reale',
-    desc: 'Ogni cambio di stato genera una notifica immediata. In-app, email o WhatsApp — tu scegli.',
-    color: 'bg-blue-50',
-    iconColor: 'text-blue-700',
-    border: 'border-blue-100',
+    icon: Phone,
+    title: 'Al telefono',
+    desc: 'Preferisci sentirci? Chiamaci e parli direttamente con chi segue il tuo ordine. Niente centralini, niente attese.',
+    color: 'bg-logo-light/60',
+    iconColor: 'text-primary',
+    border: 'border-effe-medium/30',
   },
   {
     icon: Mail,
-    title: 'Email automatiche',
-    desc: 'Riepiloghi e conferme via email per ogni ordine. Tutto documentato, sempre accessibile nella tua casella.',
-    color: 'bg-slate-50',
-    iconColor: 'text-slate-700',
-    border: 'border-slate-100',
+    title: 'Email chiare',
+    desc: 'Preventivi, conferme e aggiornamenti via email, con prezzi e dettagli sempre espliciti. Tutto per iscritto.',
+    color: 'bg-logo-light',
+    iconColor: 'text-effe-medium',
+    border: 'border-logo-lime/50',
   },
 ]
 
 export default function Communication() {
   return (
-    <section className="py-28 bg-slate-50">
+    <section className="py-28 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
@@ -42,9 +42,9 @@ export default function Communication() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-slate-900"
+            className="text-4xl font-bold text-primary-dark"
           >
-            Comunicazione multicanale,<br className="hidden sm:block" /> zero interruzioni
+            Comunicazione diretta, zero attese
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -53,7 +53,7 @@ export default function Communication() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-slate-500 max-w-lg mx-auto text-sm"
           >
-            WhatsApp, email e notifiche in-app: scegli tu come restare aggiornato sullo stato dei tuoi ordini.
+            WhatsApp, email o telefono, scegli tu come preferisci.<br className="hidden sm:block" /> Dall'altra parte ci siamo noi, non un sistema automatico.
           </motion.p>
         </div>
 
@@ -73,7 +73,7 @@ export default function Communication() {
                 <div className={`w-9 h-9 ${c.color} rounded-lg flex items-center justify-center mb-4`}>
                   <Icon size={18} className={c.iconColor} />
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-2 text-sm">{c.title}</h3>
+                <h3 className="font-semibold text-primary-dark mb-2 text-sm">{c.title}</h3>
                 <p className="text-xs text-slate-600 leading-relaxed">{c.desc}</p>
               </motion.div>
             )

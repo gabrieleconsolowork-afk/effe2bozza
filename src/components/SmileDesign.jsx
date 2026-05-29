@@ -7,22 +7,22 @@ const smileFeatures = [
     icon: ScanFace,
     title: 'Anteprima del risultato',
     desc: 'Il paziente vede il sorriso finale prima ancora di iniziare il trattamento.',
-    color: 'bg-blue-50',
-    iconColor: 'text-blue-600',
+    color: 'bg-logo-light',
+    iconColor: 'text-effe-dark',
   },
   {
     icon: SlidersHorizontal,
     title: 'Confronto prima/dopo',
     desc: 'Affianca la situazione iniziale al risultato atteso con lo slider interattivo.',
-    color: 'bg-green-50',
-    iconColor: 'text-green-600',
+    color: 'bg-logo-light/60',
+    iconColor: 'text-primary',
   },
   {
     icon: Download,
     title: 'Esporta e condividi',
     desc: 'Scarica immagini HD del confronto da mostrare o inviare al paziente.',
-    color: 'bg-slate-50',
-    iconColor: 'text-slate-700',
+    color: 'bg-logo-light',
+    iconColor: 'text-effe-medium',
   },
 ]
 
@@ -30,12 +30,12 @@ function SliderDemo() {
   const [pos, setPos] = useState(50)
 
   return (
-    <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-slate-200 select-none border border-slate-200">
+    <div className="relative w-full aspect-[16/9] md:aspect-auto md:h-full min-h-[240px] rounded-2xl overflow-hidden bg-slate-200 select-none border border-slate-200">
       {/* After (right side) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="absolute inset-0 bg-gradient-to-br from-logo-light to-logo-lime/30 flex items-center justify-center">
         <div className="text-center space-y-2">
-          <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center text-2xl">🦷</div>
-          <p className="text-sm font-semibold text-green-700">Dopo il trattamento</p>
+          <div className="w-16 h-16 mx-auto bg-logo-light rounded-full flex items-center justify-center text-2xl border border-logo-lime/40">🦷</div>
+          <p className="text-sm font-semibold text-primary">Dopo il trattamento</p>
         </div>
         <span className="absolute top-3 right-3 px-2.5 py-1 bg-white/80 backdrop-blur-sm text-xs font-semibold text-slate-700 rounded-full">Dopo</span>
       </div>
@@ -77,7 +77,7 @@ function SliderDemo() {
 
 export default function SmileDesign() {
   return (
-    <section id="smile-design" className="py-28 bg-slate-50">
+    <section id="smile-design" className="py-28 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
@@ -87,16 +87,16 @@ export default function SmileDesign() {
             viewport={{ once: true }}
             className="inline-block px-3 py-1.5 bg-white border border-slate-200 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider"
           >
-            Smile Design
+            Anteprima in tempo reale
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl font-bold text-slate-900"
+            className="text-4xl font-bold text-primary-dark"
           >
-            Mostra al paziente il sorriso ideale
+            Mostra al paziente il risultato<br className="hidden sm:block" /> prima di iniziare
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -105,23 +105,24 @@ export default function SmileDesign() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-slate-500 max-w-lg mx-auto"
           >
-            Affianca la situazione iniziale al risultato del trattamento. Trascina lo slider per confrontare il prima e il dopo.
+            Con il mock up diagnostico il dentista può presentare al paziente il risultato atteso, prima ancora di iniziare il trattamento.<br className="hidden sm:block" /> Un servizio che pochi laboratori offrono.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-6 items-stretch">
           {/* Slider */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            className="h-full"
           >
             <SliderDemo />
           </motion.div>
 
           {/* Feature list */}
-          <div className="space-y-4">
+          <div className="flex flex-col gap-6 h-full">
             {smileFeatures.map((f, i) => {
               const Icon = f.icon
               return (
@@ -137,7 +138,7 @@ export default function SmileDesign() {
                     <Icon size={18} className={f.iconColor} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">{f.title}</h3>
+                    <h3 className="font-semibold text-primary-dark mb-1">{f.title}</h3>
                     <p className="text-sm text-slate-500">{f.desc}</p>
                   </div>
                 </motion.div>

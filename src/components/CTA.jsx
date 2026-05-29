@@ -1,16 +1,17 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function CTA() {
   return (
-    <section className="py-28 bg-white">
+    <section id="contattaci" className="py-28 bg-white">
       <div className="max-w-3xl mx-auto px-6 text-center space-y-8">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight text-balance"
+          className="text-4xl lg:text-5xl font-bold text-primary-dark leading-tight text-balance"
         >
           Pronto a collaborare con noi?
         </motion.h2>
@@ -20,9 +21,12 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-slate-500 text-lg max-w-xl mx-auto"
+          className="text-slate-500 text-lg max-w-xl mx-auto space-y-3"
         >
-          Unisciti ai professionisti che hanno già scelto EFFE2. Registrazione gratuita, nessun vincolo.
+          <span className="block font-semibold text-slate-700">
+            Sei un dentista o un collega odontotecnico?
+          </span>
+          Ci occupiamo di entrambi. Con la stessa cura, gli stessi tempi, lo stesso team.
         </motion.p>
 
         <motion.div
@@ -32,27 +36,13 @@ export default function CTA() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex flex-wrap gap-3 justify-center"
         >
-          <motion.a
-            href="mailto:effe2snc@gmail.com"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-green-700 text-white rounded-2xl font-semibold text-lg hover:bg-green-800 transition-colors"
+          <Link
+            to="/contattaci"
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-effe-dark transition-colors"
           >
-            Contattaci ora
-            <ArrowRight size={18} />
-          </motion.a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="flex items-center justify-center gap-6 pt-2"
-        >
-          <a href="#" className="text-sm text-slate-400 hover:text-slate-600 transition-colors">Blog</a>
-          <span className="text-slate-200">|</span>
-          <a href="#" className="text-sm text-slate-400 hover:text-slate-600 transition-colors">FAQ</a>
+            Scrivici e parliamo
+            <ArrowRight size={15} />
+          </Link>
         </motion.div>
       </div>
     </section>

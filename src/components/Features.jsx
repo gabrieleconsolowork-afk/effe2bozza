@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
-import { Monitor, Truck, Users, Eye, MessageCircle, MapPin, Shield, Award } from 'lucide-react'
+import { Phone, Truck, Users, Bell, MessageCircle, MapPin, Shield, Award } from 'lucide-react'
 
 const features = [
-  { icon: Monitor, title: 'Da qualsiasi device', desc: 'Ordina dal computer, tablet o telefono. La piattaforma si adatta al tuo dispositivo.' },
+  { icon: Phone, title: 'Contatto diretto', desc: 'WhatsApp, email o telefono. Rispondiamo noi, non un bot.' },
   { icon: Truck, title: 'Consegna rapida', desc: 'Tempi di lavorazione ridotti grazie al workflow digitale. Lavorazione in 1–2 giorni lavorativi.' },
   { icon: Users, title: 'Odontotecnici esperti', desc: 'Un team qualificato e specializzato in protesi dentale CAD/CAM e full arch in zirconia.' },
-  { icon: Eye, title: 'Tutto tracciabile', desc: 'Segui lo stato del tuo ordine in tempo reale, dalla conferma alla spedizione.' },
-  { icon: MessageCircle, title: 'Supporto diretto', desc: 'Comunica direttamente con il team tramite il portale. Nessun call center, nessuna attesa.' },
+  { icon: Bell, title: 'Sempre aggiornato', desc: 'Ti diciamo noi quando il lavoro è pronto. Nessuna sorpresa.' },
+  { icon: MessageCircle, title: 'Supporto diretto', desc: 'Comunica direttamente con il team. Nessun call center, nessuna attesa.' },
   { icon: MapPin, title: 'Spedizione tracciabile', desc: 'Spedizione con corriere espresso e tracking in tempo reale. Consegna sicura e puntuale.' },
   { icon: Shield, title: 'Sicuro e conforme', desc: 'Conforme GDPR, dati su server europei. Nessun cookie di profilazione, massima trasparenza.' },
   { icon: Award, title: 'Qualità garantita', desc: 'Ogni manufatto è controllato prima della spedizione. Standard elevati su ogni singolo lavoro, sempre.' },
@@ -22,12 +22,12 @@ export default function Features() {
           <span className="inline-block px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider">
             Perché scegliere EFFE2
           </span>
-            <h2 className="text-4xl font-bold text-slate-900 leading-tight">
+            <h2 className="text-4xl font-bold text-primary-dark leading-tight">
               Tutto ciò che serve,<br className="hidden sm:block" /> in un unico posto
             </h2>
           </div>
           <p className="text-slate-500 max-w-xs text-sm leading-relaxed md:text-right">
-            Dall'ordine alla consegna, ogni fase del lavoro è gestita con precisione e trasparenza.
+            Un laboratorio che risponde, consegna nei tempi e sa fare il suo lavoro. Sembra poco, eppure non è così comune.
           </p>
         </div>
 
@@ -51,11 +51,11 @@ export default function Features() {
                   'hover:bg-slate-50 transition-colors',
                 ].join(' ')}
               >
-                <div className="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
-                  <Icon size={17} className="text-slate-600" />
+                <div className="w-9 h-9 rounded-lg bg-logo-light flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon size={17} className="text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-1 text-sm">{f.title}</h3>
+                  <h3 className="font-semibold text-primary-dark mb-1 text-sm">{f.title}</h3>
                   <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
                 </div>
               </motion.div>

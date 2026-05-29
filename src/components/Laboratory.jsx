@@ -42,19 +42,19 @@ const items = [
 
 export default function Laboratory() {
   return (
-    <section id="laboratorio" className="py-28 bg-slate-950 text-white">
+    <section id="chi-siamo" className="py-28 bg-effe-darker text-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div className="space-y-3">
-            <span className="inline-block px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-full uppercase tracking-wider">
+            <span className="inline-block px-3 py-1.5 bg-white/10 text-white/60 text-xs font-semibold rounded-full uppercase tracking-wider">
             Il laboratorio
           </span>
             <h2 className="text-4xl font-bold text-white leading-tight">
               Attrezzature e competenze
             </h2>
           </div>
-          <p className="text-slate-400 max-w-xs text-sm leading-relaxed md:text-right">
+          <p className="text-white/60 max-w-xs text-sm leading-relaxed md:text-right">
             Workflow completamente digitale con finitura artigianale. Dalla fresatura alla ceramizzazione, tutto sotto lo stesso tetto.
           </p>
         </div>
@@ -70,16 +70,16 @@ export default function Laboratory() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-slate-600 transition-colors"
+                className="bg-white/10 rounded-2xl p-6 border border-white/10"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center border border-slate-700">
+                  <div className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center border border-white/10">
                     <Icon size={17} className="text-lime-500" />
                   </div>
-                  <span className="text-xs font-mono text-slate-600">{item.tag}</span>
+                  <span className="text-xs font-mono text-white/40">{item.tag}</span>
                 </div>
                 <h3 className="font-semibold text-white mb-2 text-sm">{item.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                <p className="text-xs text-white/60 leading-relaxed">{item.desc}</p>
               </motion.div>
             )
           })}
