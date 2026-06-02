@@ -30,7 +30,7 @@ export default function Contattaci() {
       />
 
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="site-container">
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Left: contact info */}
             <div className="space-y-4">
@@ -44,7 +44,7 @@ export default function Contattaci() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.08 }}
-                    className="flex items-center gap-4 rounded-2xl border border-slate-200 p-5 bg-white hover:border-logo-lime/60 transition-colors"
+                    className="flex items-center gap-4 rounded-2xl border border-border p-5 bg-white hover:border-logo-lime/60 transition-colors"
                   >
                     <div className="w-11 h-11 bg-logo-light rounded-xl flex items-center justify-center shrink-0">
                       <Icon size={19} className="text-primary" />
@@ -62,17 +62,17 @@ export default function Contattaci() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.24 }}
-                className="rounded-2xl border border-slate-200 p-5 bg-slate-50 space-y-3"
+                className="rounded-2xl border border-border p-5 bg-surface-muted space-y-3"
               >
                 <div className="flex items-start gap-3">
                   <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
-                  <p className="text-sm text-slate-500 leading-relaxed">
+                  <p className="text-sm text-muted leading-relaxed">
                     Viale Cadore 56/G<br />32014 Ponte nelle Alpi (BL)
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock size={18} className="text-primary shrink-0 mt-0.5" />
-                  <p className="text-sm text-slate-500 leading-relaxed">
+                  <p className="text-sm text-muted leading-relaxed">
                     Lunedì – Venerdì<br />8:30 – 18:00
                   </p>
                 </div>
@@ -86,7 +86,7 @@ export default function Contattaci() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="rounded-3xl border border-slate-200 p-8 bg-white space-y-5"
+              className="rounded-3xl border border-border p-8 bg-white space-y-5"
             >
               <div>
                 <label className="block text-sm font-medium text-primary-dark mb-1.5">Nome</label>
@@ -96,7 +96,7 @@ export default function Contattaci() {
                   onChange={handleChange}
                   required
                   placeholder="Il tuo nome o studio"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-primary-dark placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-logo-light transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border border-border text-sm text-primary-dark placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-logo-light transition-colors"
                 />
               </div>
               <div>
@@ -108,7 +108,7 @@ export default function Contattaci() {
                   onChange={handleChange}
                   required
                   placeholder="nome@studio.it"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-primary-dark placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-logo-light transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border border-border text-sm text-primary-dark placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-logo-light transition-colors"
                 />
               </div>
               <div>
@@ -120,7 +120,7 @@ export default function Contattaci() {
                   required
                   rows={5}
                   placeholder="Raccontaci di cosa hai bisogno…"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-primary-dark placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-logo-light transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-border text-sm text-primary-dark placeholder:text-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-logo-light transition-colors resize-none"
                 />
               </div>
               <button

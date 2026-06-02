@@ -32,16 +32,16 @@ function OrderCard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.3 }}
-      className="bg-white rounded-2xl border border-slate-200 overflow-hidden max-w-md mx-auto"
+      className="bg-white rounded-2xl border border-border overflow-hidden max-w-md mx-auto"
     >
-      <div className="flex items-center gap-1.5 px-4 py-3 bg-slate-50 border-b border-slate-100">
+      <div className="flex items-center gap-1.5 px-4 py-3 bg-surface-muted border-b border-border-light">
         <span className="w-3 h-3 rounded-full bg-red-300" />
         <span className="w-3 h-3 rounded-full bg-yellow-300" />
         <span className="w-3 h-3 rounded-full bg-effe-medium" />
       </div>
       <div className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-sm font-semibold text-slate-700">CAM-2026-0042</span>
+          <span className="font-mono text-sm font-semibold text-muted-strong">CAM-2026-0042</span>
           <span className="px-2 py-0.5 bg-logo-light text-primary text-xs rounded-full font-medium border border-logo-lime/40">
             Spedito
           </span>
@@ -58,7 +58,7 @@ function OrderCard() {
                 <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
                   i < active ? 'bg-primary border-primary' :
                   i === active ? 'bg-white border-primary ring-4 ring-logo-light' :
-                  'bg-white border-slate-200'
+                  'bg-white border-border'
                 }`}>
                   {i < active && <span className="w-2 h-2 bg-white rounded-full" />}
                   {i === active && <span className="w-1.5 h-1.5 bg-primary rounded-full" />}
@@ -74,10 +74,10 @@ function OrderCard() {
           ))}
         </div>
 
-        <div className="flex items-center gap-3 bg-slate-50 rounded-lg p-3 border border-slate-100">
+        <div className="flex items-center gap-3 bg-surface-muted rounded-lg p-3 border border-border-light">
           <div className="w-8 h-8 bg-logo-light rounded-lg flex items-center justify-center text-sm">🚚</div>
           <div>
-            <p className="text-xs font-semibold text-slate-700">BRT Express</p>
+            <p className="text-xs font-semibold text-muted-strong">BRT Express</p>
             <p className="text-xs text-slate-400">Tracking: 1234567890</p>
           </div>
         </div>
@@ -89,10 +89,10 @@ function OrderCard() {
 export default function HowItWorks() {
   return (
     <section id="come-funziona" className="pt-56 pb-28 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="site-container">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <span className="inline-block px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider">
+          <span className="section-label">
             Come funziona
           </span>
           <motion.h2
@@ -109,7 +109,7 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-slate-500 max-w-lg mx-auto text-sm"
+            className="text-muted max-w-lg mx-auto text-sm"
           >
             Dal primo contatto alla consegna del lavoro finito.<br className="hidden sm:block" /> Semplice, veloce, trasparente.
           </motion.p>
@@ -137,7 +137,7 @@ export default function HowItWorks() {
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-primary-dark">{step.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto">{step.desc}</p>
+                <p className="text-sm text-muted leading-relaxed max-w-xs mx-auto">{step.desc}</p>
               </motion.div>
             )
           })}

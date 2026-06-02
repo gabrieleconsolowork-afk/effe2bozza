@@ -79,7 +79,7 @@ export default function Servizi() {
 
       {/* Services */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="site-container">
           <div className="grid md:grid-cols-2 gap-6">
             {services.map((s, i) => {
               const Icon = s.icon
@@ -90,7 +90,7 @@ export default function Servizi() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
-                  className="rounded-2xl border border-slate-200 p-7 bg-white flex flex-col"
+                  className="rounded-2xl border border-border p-7 bg-white flex flex-col"
                 >
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 bg-logo-light rounded-xl flex items-center justify-center shrink-0">
@@ -98,10 +98,10 @@ export default function Servizi() {
                     </div>
                     <h3 className="text-lg font-bold text-primary-dark">{s.title}</h3>
                   </div>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-5">{s.desc}</p>
+                  <p className="text-sm text-muted leading-relaxed mb-5">{s.desc}</p>
                   <ul className="space-y-2 mt-auto">
                     {s.points.map((p) => (
-                      <li key={p} className="flex items-start gap-2.5 text-sm text-slate-600">
+                      <li key={p} className="flex items-start gap-2.5 text-sm text-muted">
                         <Check size={16} className="text-primary shrink-0 mt-0.5" />
                         <span>{p}</span>
                       </li>
@@ -118,8 +118,8 @@ export default function Servizi() {
 
       {/* CTA */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
+        <div className="site-container">
+          <div className="max-w-4xl mx-auto text-center space-y-4">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function Servizi() {
               className="space-y-4"
             >
               <h2 className="text-3xl font-bold text-primary-dark leading-tight">Hai un caso da realizzare?</h2>
-              <p className="text-slate-500 leading-relaxed max-w-md mx-auto">Inviaci la scansione: ti rispondiamo con tempi<br className="hidden sm:block" /> e preventivo chiari.</p>
+              <p className="text-muted leading-relaxed max-w-md mx-auto">Inviaci la scansione: ti rispondiamo con tempi<br className="hidden sm:block" /> e preventivo chiari.</p>
               <Link
                 to="/contattaci"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-effe-dark transition-colors"

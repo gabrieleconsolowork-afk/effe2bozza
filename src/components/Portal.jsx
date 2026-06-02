@@ -20,7 +20,7 @@ const orders = [
 export default function Portal() {
   return (
     <section className="py-28 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="site-container">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left: text */}
           <div className="space-y-6">
@@ -28,7 +28,7 @@ export default function Portal() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="inline-block px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider"
+              className="section-label"
             >
               Il portale
             </motion.span>
@@ -48,7 +48,7 @@ export default function Portal() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-slate-500 leading-relaxed"
+              className="text-muted leading-relaxed pr-10 sm:pr-14 md:pr-20"
             >
               Stiamo costruendo uno spazio digitale dove potrai gestire ordini, comunicare con il team e seguire ogni lavorazione in tempo reale. Per ora ci trovi su WhatsApp e email, stessa velocità, stesso team.
             </motion.p>
@@ -61,7 +61,7 @@ export default function Portal() {
               className="space-y-3"
             >
               {bullets.map((b) => (
-                <li key={b} className="flex items-center gap-3 text-sm text-slate-700">
+                <li key={b} className="flex items-center gap-3 text-sm text-muted-strong">
                   <CheckCircle2 size={16} className="text-primary shrink-0" />
                   {b}
                 </li>
@@ -76,15 +76,15 @@ export default function Portal() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-              <div className="flex items-center gap-1.5 px-4 py-3 bg-slate-50 border-b border-slate-100">
+            <div className="bg-white rounded-2xl border border-border overflow-hidden">
+              <div className="flex items-center gap-1.5 px-4 py-3 bg-slate-50 border-b border-slate-200">
                 <span className="w-3 h-3 rounded-full bg-red-300" />
                 <span className="w-3 h-3 rounded-full bg-yellow-300" />
                 <span className="w-3 h-3 rounded-full bg-effe-medium" />
               </div>
               <div className="p-5">
-                <p className="text-sm font-semibold text-slate-700 mb-4">I tuoi ordini</p>
-                <div className="divide-y divide-slate-100">
+                <p className="text-sm font-semibold text-muted-strong mb-4">I tuoi ordini</p>
+                <div className="divide-y divide-slate-200">
                   {orders.map((o, i) => (
                     <motion.div
                       key={o.code}
@@ -95,7 +95,7 @@ export default function Portal() {
                       className="flex items-center justify-between py-3"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs font-semibold text-slate-700">{o.code}</span>
+                        <span className="font-mono text-xs font-semibold text-muted-strong">{o.code}</span>
                         <span className="text-xs text-slate-400">{o.date}</span>
                       </div>
                       <div className="flex items-center gap-2">

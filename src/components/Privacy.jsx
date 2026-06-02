@@ -28,10 +28,10 @@ const items = [
 export default function Privacy() {
   return (
     <section className="py-28 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="site-container">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <span className="inline-block px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider">
+          <span className="section-label">
             Privacy e sicurezza
           </span>
           <motion.h2
@@ -48,14 +48,14 @@ export default function Privacy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-slate-500 max-w-lg mx-auto text-sm"
+            className="text-muted max-w-lg mx-auto text-sm"
           >
             Lavoriamo con informazioni sensibili e le trattiamo con la massima serietà. Conformità GDPR, trasparenza totale.
           </motion.p>
         </div>
 
         {/* Cards — no shadow, only border */}
-        <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
           {items.map((item, i) => {
             const Icon = item.icon
             return (
@@ -65,13 +65,13 @@ export default function Privacy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-slate-50 rounded-2xl p-6 border border-slate-200"
+                className="bg-surface-muted rounded-2xl p-6 border border-border"
               >
                 <div className="w-9 h-9 bg-logo-light rounded-lg flex items-center justify-center mb-4 border border-logo-lime/30">
                   <Icon size={17} className="text-primary" />
                 </div>
                 <h3 className="font-semibold text-primary-dark mb-1.5 text-sm">{item.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+                <p className="text-xs text-muted leading-relaxed">{item.desc}</p>
               </motion.div>
             )
           })}
@@ -84,7 +84,7 @@ export default function Privacy() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-center mt-8"
         >
-          <Link to="/privacy" className="text-sm text-slate-500 hover:text-slate-800 font-medium transition-colors underline underline-offset-4">
+          <Link to="/privacy" className="text-sm text-muted hover:text-slate-800 font-medium transition-colors underline underline-offset-4">
             Leggi la privacy policy →
           </Link>
         </motion.div>

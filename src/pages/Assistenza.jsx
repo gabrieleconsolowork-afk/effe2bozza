@@ -36,7 +36,7 @@ export default function Assistenza() {
       />
 
       <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="site-container">
           <div className="grid md:grid-cols-3 gap-6">
             {channels.map((c, i) => {
               const Icon = c.icon
@@ -48,13 +48,13 @@ export default function Assistenza() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="rounded-2xl border border-slate-200 p-6 bg-white flex flex-col"
+                  className="rounded-2xl border border-border p-6 bg-white flex flex-col"
                 >
                   <div className="w-10 h-10 bg-logo-light rounded-xl flex items-center justify-center mb-4">
                     <Icon size={18} className="text-primary" />
                   </div>
                   <h3 className="font-semibold text-primary-dark mb-1">{c.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-4">{c.desc}</p>
+                  <p className="text-sm text-muted leading-relaxed mb-4">{c.desc}</p>
                   <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary mt-auto">
                     {c.action}
                     <ArrowRight size={14} />
@@ -69,14 +69,14 @@ export default function Assistenza() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 rounded-2xl border border-slate-200 p-6 bg-slate-50 flex items-start gap-4"
+            className="mt-6 rounded-2xl border border-border p-6 bg-surface-muted flex items-start gap-4"
           >
-            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center border border-slate-200 shrink-0">
+            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center border border-border shrink-0">
               <MapPin size={18} className="text-primary" />
             </div>
             <div>
               <h3 className="font-semibold text-primary-dark mb-1">Dove siamo</h3>
-              <p className="text-sm text-slate-500 leading-relaxed">
+              <p className="text-sm text-muted leading-relaxed">
                 Viale Cadore 56/G, 32014 Ponte nelle Alpi (BL)<br />
                 Lunedì – Venerdì, 8:30 – 18:00
               </p>

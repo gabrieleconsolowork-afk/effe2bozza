@@ -39,7 +39,7 @@ export default function Carriere() {
       />
 
       <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="site-container">
           <div className="grid sm:grid-cols-3 gap-6 mb-16">
             {perks.map((p, i) => {
               const Icon = p.icon
@@ -56,7 +56,7 @@ export default function Carriere() {
                     <Icon size={20} className="text-primary" />
                   </div>
                   <h3 className="font-semibold text-primary-dark">{p.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{p.desc}</p>
+                  <p className="text-sm text-muted leading-relaxed">{p.desc}</p>
                 </motion.div>
               )
             })}
@@ -71,11 +71,11 @@ export default function Carriere() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="rounded-2xl border border-slate-200 p-6 bg-white flex flex-col md:flex-row md:items-center gap-4 md:justify-between"
+                className="rounded-2xl border border-border p-6 bg-white flex flex-col md:flex-row md:items-center gap-4 md:justify-between"
               >
                 <div>
                   <h3 className="font-semibold text-primary-dark mb-2">{pos.role}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-3 max-w-xl">{pos.desc}</p>
+                  <p className="text-sm text-muted leading-relaxed mb-3 max-w-xl">{pos.desc}</p>
                   <div className="flex items-center gap-4 text-xs text-slate-400">
                     <span className="inline-flex items-center gap-1"><Clock size={13} /> {pos.type}</span>
                     <span className="inline-flex items-center gap-1"><MapPin size={13} /> {pos.place}</span>

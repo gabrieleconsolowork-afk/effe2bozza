@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
@@ -29,17 +28,33 @@ const faqs = [
   },
 ]
 
+function FaqToggleIcon({ isOpen }) {
+  return (
+    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-logo-light text-primary">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="text-primary" aria-hidden>
+        <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <motion.g
+          style={{ transformOrigin: '12px 12px', transformBox: 'fill-box' }}
+          initial={false}
+          animate={{ scaleY: isOpen ? 0 : 1 }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        </motion.g>
+      </svg>
+    </span>
+  )
+}
+
 function FaqItem({ q, a, isOpen, onToggle }) {
   return (
-    <div className="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+    <div className="border border-border rounded-2xl overflow-hidden bg-white">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+        className="w-full flex items-center justify-between gap-4 py-5 pl-6 pr-8 text-left"
       >
-        <span className="font-semibold text-primary-dark">{q}</span>
-        <span className="shrink-0 w-7 h-7 rounded-full bg-logo-light flex items-center justify-center text-primary">
-          {isOpen ? <Minus size={15} /> : <Plus size={15} />}
-        </span>
+        <span className="min-w-0 flex-1 pr-8 font-semibold text-primary-dark sm:pr-10">{q}</span>
+        <FaqToggleIcon isOpen={isOpen} />
       </button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -50,7 +65,9 @@ function FaqItem({ q, a, isOpen, onToggle }) {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <p className="px-6 pb-5 text-sm text-slate-500 leading-relaxed">{a}</p>
+            <p className="max-w-2xl pb-5 pl-6 pr-10 text-sm leading-relaxed text-muted sm:pr-14">
+              {a}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -63,10 +80,10 @@ export default function Faq() {
 
   return (
     <section id="faq" className="py-28 bg-white">
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="site-container">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <span className="inline-block px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider">
+          <span className="section-label">
             FAQ
           </span>
           <motion.h2
@@ -83,13 +100,13 @@ export default function Faq() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-slate-500 max-w-lg mx-auto text-sm"
+            className="text-muted max-w-lg mx-auto text-sm"
           >
             Le risposte alle domande che ci vengono poste più spesso.<br className="hidden sm:block" /> Non trovi quella che cerchi? Scrivici, ti rispondiamo noi.
           </motion.p>
         </div>
 
-        <div className="space-y-3">
+        <div className="mx-auto max-w-4xl space-y-3">
           {faqs.map((f, i) => (
             <FaqItem
               key={f.q}

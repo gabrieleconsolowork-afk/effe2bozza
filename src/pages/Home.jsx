@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import HowItWorks from '../components/HowItWorks'
+import AboutHighlight from '../components/AboutHighlight'
 import Features from '../components/Features'
 import Communication from '../components/Communication'
 import SmileDesign from '../components/SmileDesign'
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <Hero />
       <HowItWorks />
+      <AboutHighlight />
       <Features />
       <Communication />
       <SmileDesign />

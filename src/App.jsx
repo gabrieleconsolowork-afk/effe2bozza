@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollManager from './components/ScrollManager'
+import SmoothScroll from './components/SmoothScroll'
 import Home from './pages/Home'
 import ChiSiamo from './pages/ChiSiamo'
 import Servizi from './pages/Servizi'
@@ -16,7 +17,8 @@ import Condizioni from './pages/Condizioni'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-white font-sans overflow-x-clip">
+      <SmoothScroll />
       <ScrollManager />
       <Navbar />
       <main>

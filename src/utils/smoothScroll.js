@@ -1,27 +1,90 @@
-function easeOutQuart(t) {
-  return 1 - (1 - t) ** 4
+export const NAV_OFFSET = 88
+
+let lenisInstance = null
+
+export function setLenis(instance) {
+  lenisInstance = instance
 }
 
-export function smoothScrollToElement(element, { duration = 900, offset = 0 } = {}) {
+function prefersReducedMotion() {
+  return window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
+}
+
+function nativeScrollToElement(element) {
   if (!element) return
+  element.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' })
+}
 
-  const startY = window.scrollY
-  const targetY = element.getBoundingClientRect().top + window.scrollY - offset
-  const distance = targetY - startY
-  if (distance === 0) return
+export function smoothScrollToElement(element) {
+  if (!element) return Promise.resolve()
 
-  const startTime = performance.now()
-
-  function tick(now) {
-    const progress = Math.min((now - startTime) / duration, 1)
-    window.scrollTo(0, startY + distance * easeOutQuart(progress))
-    if (progress < 1) requestAnimationFrame(tick)
+  if (lenisInstance && !prefersReducedMotion()) {
+    return new Promise((resolve) => {
+      lenisInstance.scrollTo(element, {
+        offset: -NAV_OFFSET,
+        duration: 0.85,
+        onComplete: resolve,
+      })
+    })
   }
 
-  tick(startTime + 1)
-  requestAnimationFrame(tick)
+  nativeScrollToElement(element)
+  return Promise.resolve()
 }
 
-export function smoothScrollToId(id, options) {
-  smoothScrollToElement(document.getElementById(id), options)
+export function smoothScrollToId(id) {
+  return smoothScrollToElement(document.getElementById(id))
+}
+
+export function smoothScrollToTop() {
+  if (lenisInstance && !prefersReducedMotion()) {
+    return new Promise((resolve) => {
+      lenisInstance.scrollTo(0, { duration: 0.65, onComplete: resolve })
+    })
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' })
+  return Promise.resolve()
+}
+
+export function smoothScrollToIdWhenReady(id, maxAttempts = 80) {
+  return new Promise((resolve) => {
+    let attempts = 0
+
+    const tryScroll = () => {
+      const el = document.getElementById(id)
+      if (el) {
+        smoothScrollToElement(el).then(resolve)
+        return
+      }
+      if (attempts++ >= maxAttempts) {
+        resolve()
+        return
+      }
+      requestAnimationFrame(tryScroll)
+    }
+
+    tryScroll()
+  })
+}
+
+export function parseHashHref(href) {
+  if (!href?.includes('#')) return null
+  try {
+    const url = new URL(href, window.location.origin)
+    const id = url.hash.replace('#', '').split('?')[0]
+    if (!id) return null
+    return { path: url.pathname || '/', id }
+  } catch {
+    return null
+  }
+}
+
+export function syncHash(path, id) {
+  window.history.pushState(null, '', `${path}#${id}`)
+}
+
+export function initScrollRestoration() {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual'
+  }
 }

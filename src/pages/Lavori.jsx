@@ -25,7 +25,7 @@ export default function Lavori() {
       />
 
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="site-container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {works.map((w, i) => (
               <motion.div
@@ -34,7 +34,7 @@ export default function Lavori() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                className="rounded-2xl border border-slate-200 overflow-hidden bg-white group"
+                className="rounded-2xl border border-border overflow-hidden bg-white group"
               >
                 <div className="aspect-[4/3] w-full overflow-hidden">
                   <img

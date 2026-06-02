@@ -31,16 +31,16 @@ const themes = {
     navBtn: 'w-10 h-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-white/70 hover:bg-white/20 hover:text-white transition-colors',
   },
   light: {
-    badge: 'inline-block px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider',
+    badge: 'section-label',
     title: 'font-semibold text-primary-dark mb-2 text-sm',
     titleLg: 'text-4xl font-bold text-primary-dark leading-tight',
     titleCentered: 'text-3xl font-bold text-primary-dark',
-    subtitle: 'text-slate-500',
-    card: 'h-full bg-white border border-slate-200 flex flex-col',
+    subtitle: 'text-muted',
+    card: 'h-full bg-white border border-border flex flex-col',
     iconBox: 'w-9 h-9 bg-logo-light rounded-lg flex items-center justify-center border border-effe-medium/30',
     icon: 'text-primary',
-    desc: 'text-xs text-slate-500 leading-relaxed flex-1',
-    navBtn: 'w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-primary-dark transition-colors',
+    desc: 'text-xs text-muted leading-relaxed flex-1',
+    navBtn: 'w-10 h-10 rounded-full bg-slate-100 border border-border flex items-center justify-center text-muted hover:bg-slate-200 hover:text-primary-dark transition-colors',
   },
 }
 
@@ -246,7 +246,7 @@ export default function Laboratory({ sectionId = 'chi-siamo', header = 'split', 
 
   return (
     <section {...(sectionId ? { id: sectionId } : {})} className={className}>
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="site-container">
         <LaboratoryHeader variant={header} theme={theme} />
 
         <div

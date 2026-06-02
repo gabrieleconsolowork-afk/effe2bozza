@@ -32,7 +32,7 @@ function SliderDemo() {
   const [pos, setPos] = useState(50)
 
   return (
-    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 select-none border border-slate-200 shadow-sm">
+    <div className="relative h-full w-full min-h-0 max-md:aspect-video rounded-2xl overflow-hidden bg-slate-900 select-none border border-border shadow-sm">
       {/* Dopo (full frame) */}
       <img
         src={imgDopo}
@@ -66,8 +66,8 @@ function SliderDemo() {
         style={{ left: `${pos}%`, transform: 'translateX(-50%)' }}
       >
         <div className="w-0.5 h-full bg-white/90 shadow-sm" />
-        <div className="absolute w-9 h-9 bg-white rounded-full flex items-center justify-center border border-slate-200 shadow-md">
-          <span className="text-slate-500 text-[10px] font-bold tracking-tighter">⟺</span>
+        <div className="absolute w-9 h-9 bg-white rounded-full flex items-center justify-center border border-border shadow-md">
+          <span className="text-muted text-[10px] font-bold tracking-tighter">⟺</span>
         </div>
       </div>
 
@@ -87,14 +87,14 @@ function SliderDemo() {
 export default function SmileDesign() {
   return (
     <section id="smile-design" className="py-28 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="site-container">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="inline-block px-3 py-1.5 bg-white border border-slate-200 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider"
+            className="inline-block px-3 py-1.5 bg-white border border-border text-muted text-xs font-semibold rounded-full uppercase tracking-wider"
           >
             Anteprima in tempo reale
           </motion.span>
@@ -112,26 +112,26 @@ export default function SmileDesign() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-slate-500 max-w-lg mx-auto"
+            className="text-muted max-w-lg mx-auto"
           >
             Con il mock up diagnostico il dentista può presentare al paziente il risultato atteso, prima ancora di iniziare il trattamento.<br className="hidden sm:block" /> Un servizio che pochi laboratori offrono.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 items-stretch">
-          {/* Slider */}
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2 md:items-stretch">
+          {/* Slider — stessa altezza della colonna card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="h-full"
+            className="flex min-h-0 md:h-full"
           >
             <SliderDemo />
           </motion.div>
 
           {/* Feature list */}
-          <div className="flex flex-col gap-6 h-full">
+          <div className="flex flex-col gap-4 md:h-full md:justify-between">
             {smileFeatures.map((f, i) => {
               const Icon = f.icon
               return (
@@ -141,14 +141,14 @@ export default function SmileDesign() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="flex items-start gap-4 bg-white rounded-2xl p-5 border border-[#DEE4ED]"
+                  className="flex items-start gap-4 bg-white rounded-2xl p-5 border border-[#DEE4ED] md:flex-1 md:min-h-0"
                 >
                   <div className={`w-10 h-10 ${f.color} rounded-xl flex items-center justify-center shrink-0`}>
                     <Icon size={18} className={f.iconColor} />
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary-dark mb-1">{f.title}</h3>
-                    <p className="text-sm text-slate-500">{f.desc}</p>
+                    <p className="text-sm text-muted">{f.desc}</p>
                   </div>
                 </motion.div>
               )

@@ -52,7 +52,7 @@ export default function Blog() {
       />
 
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="site-container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((p, i) => (
               <motion.article
@@ -61,7 +61,7 @@ export default function Blog() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                className="rounded-2xl border border-slate-200 overflow-hidden bg-white flex flex-col group"
+                className="rounded-2xl border border-border overflow-hidden bg-white flex flex-col group"
               >
                 <div className="aspect-[16/9] w-full overflow-hidden">
                   <img
@@ -79,7 +79,7 @@ export default function Blog() {
                     <span className="text-slate-400">{p.date}</span>
                   </div>
                   <h3 className="font-semibold text-primary-dark mb-2 leading-snug">{p.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-4">{p.excerpt}</p>
+                  <p className="text-sm text-muted leading-relaxed mb-4">{p.excerpt}</p>
                   <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary mt-auto">
                     Leggi l'articolo
                     <ArrowRight size={14} />

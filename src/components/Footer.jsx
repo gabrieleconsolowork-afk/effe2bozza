@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
+import SmoothHashLink from './SmoothHashLink'
 
 const nav = {
   Pagine: [
@@ -30,7 +31,7 @@ const linkClass = 'text-sm text-white/60 hover:text-white transition-colors dura
 export default function Footer() {
   return (
     <footer className="bg-effe-darker text-white/60">
-      <div className="max-w-6xl mx-auto px-6 pt-16 pb-8">
+      <div className="site-container pt-16 pb-8">
         <div className="grid md:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1 space-y-4">
@@ -50,6 +51,8 @@ export default function Footer() {
                   <li key={l.label}>
                     {l.href ? (
                       <a href={l.href} className={linkClass}>{l.label}</a>
+                    ) : l.to.includes('#') ? (
+                      <SmoothHashLink to={l.to} className={linkClass}>{l.label}</SmoothHashLink>
                     ) : (
                       <Link to={l.to} className={linkClass}>{l.label}</Link>
                     )}

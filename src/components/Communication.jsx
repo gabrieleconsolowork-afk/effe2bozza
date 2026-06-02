@@ -31,10 +31,10 @@ const cards = [
 export default function Communication() {
   return (
     <section className="py-28 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="site-container">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <span className="inline-block px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider">
+          <span className="section-label">
             Sempre connesso
           </span>
           <motion.h2
@@ -51,14 +51,14 @@ export default function Communication() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-slate-500 max-w-lg mx-auto text-sm"
+            className="text-muted max-w-lg mx-auto text-sm"
           >
             WhatsApp, email o telefono, scegli tu come preferisci.<br className="hidden sm:block" /> Dall'altra parte ci siamo noi, non un sistema automatico.
           </motion.p>
         </div>
 
         {/* Cards — no shadow, only border */}
-        <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {cards.map((c, i) => {
             const Icon = c.icon
             return (
@@ -68,13 +68,13 @@ export default function Communication() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="rounded-2xl p-6 border border-slate-200 bg-white"
+                className="rounded-2xl p-6 border border-border bg-white"
               >
                 <div className={`w-9 h-9 ${c.color} rounded-lg flex items-center justify-center mb-4`}>
                   <Icon size={18} className={c.iconColor} />
                 </div>
                 <h3 className="font-semibold text-primary-dark mb-2 text-sm">{c.title}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{c.desc}</p>
+                <p className="text-xs text-muted leading-relaxed">{c.desc}</p>
               </motion.div>
             )
           })}

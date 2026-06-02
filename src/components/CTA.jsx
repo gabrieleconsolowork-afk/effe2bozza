@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function CTA() {
   return (
     <section id="contattaci" className="py-28 bg-white">
-      <div className="max-w-3xl mx-auto px-6 text-center space-y-8">
+      <div className="site-container text-center space-y-8">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,9 +21,9 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-slate-500 text-lg max-w-xl mx-auto space-y-3"
+          className="text-muted text-lg max-w-xl mx-auto space-y-3"
         >
-          <span className="block font-semibold text-slate-700">
+          <span className="block font-semibold text-muted-strong">
             Sei un dentista o un collega odontotecnico?
           </span>
           Ci occupiamo di entrambi. Con la stessa cura, gli stessi tempi, lo stesso team.

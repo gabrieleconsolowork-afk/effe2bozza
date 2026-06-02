@@ -4,8 +4,8 @@ const partners = ['ZirkonZahn', 'Shofu', 'Ivoclar', 'Noritake', 'Bredent', 'Eleg
 
 export default function Partners() {
   return (
-    <section className="py-12 bg-slate-50 border-b border-slate-100 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 mb-8 text-center">
+    <section className="py-12 bg-surface-muted border-b border-border-light overflow-hidden">
+      <div className="site-container mb-8 text-center">
         <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest">Partner tecnologici</p>
       </div>
 
@@ -17,7 +17,7 @@ export default function Partners() {
           transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
         >
           {[...partners, ...partners].map((p, i) => (
-            <span key={i} className="text-slate-400 font-semibold text-lg whitespace-nowrap hover:text-slate-600 transition-colors cursor-default">
+            <span key={i} className="text-slate-400 font-semibold text-lg whitespace-nowrap hover:text-muted transition-colors cursor-default">
               {p}
             </span>
           ))}

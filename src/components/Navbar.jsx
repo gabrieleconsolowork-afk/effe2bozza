@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
+import SmoothHashLink from './SmoothHashLink'
 
 const links = [
   { label: 'Home', to: '/#home' },
@@ -22,23 +23,29 @@ export default function Navbar() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md border-b border-slate-100' : 'bg-transparent'
+        scrolled ? 'bg-white/90 backdrop-blur-md border-b border-border-light' : 'bg-transparent'
       }`}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="site-container h-16 flex items-center justify-between">
         <Logo header />
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
-          {links.map((l) => (
-            <Link key={l.label} to={l.to}
-              className="px-3 py-1.5 text-sm text-slate-600 hover:text-primary rounded-md hover:bg-logo-light/40 transition-colors">
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const LinkComp = l.to.includes('#') ? SmoothHashLink : Link
+            return (
+              <LinkComp
+                key={l.label}
+                to={l.to}
+                className="px-3 py-1.5 text-sm text-muted hover:text-primary rounded-md hover:bg-logo-light/40 transition-colors"
+              >
+                {l.label}
+              </LinkComp>
+            )
+          })}
           <Link to="/contattaci"
             className="ml-3 px-4 py-2 text-sm bg-primary-dark text-white rounded-lg hover:bg-primary transition-colors font-medium">
             Contattaci
@@ -63,17 +70,23 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-slate-100 overflow-hidden"
+            className="md:hidden bg-white border-b border-border-light overflow-hidden"
           >
-            <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
-              {links.map((l) => (
-                <Link key={l.label} to={l.to}
-                  onClick={() => setMenuOpen(false)}
-                  className="px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-md">
-                  {l.label}
-                </Link>
-              ))}
-              <div className="mt-3 pt-3 border-t border-slate-100">
+            <div className="site-container py-4 flex flex-col gap-1">
+              {links.map((l) => {
+                const LinkComp = l.to.includes('#') ? SmoothHashLink : Link
+                return (
+                  <LinkComp
+                    key={l.label}
+                    to={l.to}
+                    onClick={() => setMenuOpen(false)}
+                    className="px-3 py-2 text-sm text-muted-strong hover:bg-surface-muted rounded-md"
+                  >
+                    {l.label}
+                  </LinkComp>
+                )
+              })}
+              <div className="mt-3 pt-3 border-t border-border-light">
                 <Link to="/contattaci"
                   onClick={() => setMenuOpen(false)}
                   className="block w-full py-2 text-center text-sm bg-primary-dark text-white rounded-lg font-medium">

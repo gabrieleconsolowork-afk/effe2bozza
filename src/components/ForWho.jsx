@@ -24,10 +24,10 @@ const cards = [
 export default function ForWho() {
   return (
     <section id="per-chi" className="py-28 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="site-container">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <span className="inline-block px-3 py-1.5 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full uppercase tracking-wider">
+          <span className="section-label">
             Per chi è EFFE2
           </span>
           <motion.h2
@@ -41,7 +41,7 @@ export default function ForWho() {
           </motion.h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {cards.map((card, i) => {
             const isBlue = card.color === 'blue'
             return (
@@ -53,7 +53,7 @@ export default function ForWho() {
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 className={`rounded-3xl p-8 border flex flex-col h-full ${
                   isBlue
-                    ? 'bg-white border-slate-200'
+                    ? 'bg-white border-border'
                     : 'bg-effe-darker-soft border-white/10 text-white hover:border-white/20 transition-colors'
                 }`}
               >
@@ -63,10 +63,14 @@ export default function ForWho() {
                   {card.tag}
                 </span>
 
-                <h3 className={`text-2xl font-bold mb-3 ${isBlue ? 'text-primary-dark' : 'text-white'}`}>
+                <h3
+                  className={`text-2xl font-bold mb-3 ${
+                    isBlue ? 'text-primary-dark' : 'text-white pr-10 sm:pr-14'
+                  }`}
+                >
                   {card.title}
                 </h3>
-                <p className={`text-sm leading-relaxed ${isBlue ? 'text-slate-500' : 'text-white/60'}`}>
+                <p className={`text-sm leading-relaxed ${isBlue ? 'text-muted' : 'text-white/60'}`}>
                   {card.desc}
                 </p>
 

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import SmoothHashLink from './SmoothHashLink'
 import logo from '../assets/logo.png'
 
 export default function Logo({ className = '', showText = true, size = 'md', light = false, header = false }) {
@@ -12,7 +12,7 @@ export default function Logo({ className = '', showText = true, size = 'md', lig
       : 'text-lg'
 
   return (
-    <Link
+    <SmoothHashLink
       to="/#home"
       className={`inline-flex items-center gap-2.5 font-bold ${textClass} ${className}`}
     >
@@ -31,6 +31,6 @@ export default function Logo({ className = '', showText = true, size = 'md', lig
           {wordmark}
         </span>
       )}
-    </Link>
+    </SmoothHashLink>
   )
 }
