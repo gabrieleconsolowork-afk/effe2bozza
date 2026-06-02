@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { ImageIcon, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
+import { portfolioImages } from '../data/siteImages'
 
 const works = [
   { title: 'Full arch in zirconia', cat: 'Protesi fissa' },
@@ -14,21 +15,13 @@ const works = [
   { title: 'Mock-up diagnostico', cat: 'Smile design' },
 ]
 
-function PlaceholderImage() {
-  return (
-    <div className="aspect-[4/3] w-full bg-gradient-to-br from-logo-light to-logo-lime/30 flex items-center justify-center">
-      <ImageIcon size={32} className="text-effe-dark/40" />
-    </div>
-  )
-}
-
 export default function Lavori() {
   return (
     <>
       <PageHeader
         badge="Portfolio"
         title="I nostri lavori"
-        subtitle="Una selezione di manufatti realizzati nel nostro laboratorio. Le immagini sono dimostrative: stiamo preparando la galleria definitiva."
+        subtitle="Una selezione di manufatti realizzati nel nostro laboratorio: protesi fisse, estetica, implantologia e smile design."
       />
 
       <section className="py-20 bg-white">
@@ -43,7 +36,15 @@ export default function Lavori() {
                 transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
                 className="rounded-2xl border border-slate-200 overflow-hidden bg-white group"
               >
-                <PlaceholderImage />
+                <div className="aspect-[4/3] w-full overflow-hidden">
+                  <img
+                    src={portfolioImages[w.title]}
+                    alt={w.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
                 <div className="p-5">
                   <span className="text-xs font-semibold text-primary uppercase tracking-wider">{w.cat}</span>
                   <h3 className="font-semibold text-primary-dark mt-1">{w.title}</h3>

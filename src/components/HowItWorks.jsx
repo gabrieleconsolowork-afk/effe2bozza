@@ -7,27 +7,18 @@ const steps = [
     icon: MessageCircle,
     title: 'Ci contatti',
     desc: 'Mandaci la scansione STL o le immagini direttamente via WhatsApp o email. Nessun software da installare, nessuna burocrazia.',
-    color: 'bg-logo-light',
-    iconColor: 'text-effe-dark',
-    border: 'border-logo-lime/40',
   },
   {
     number: '2',
     icon: Users,
     title: 'Il team lavora',
     desc: 'Davide e il team prendono in carico il tuo ordine. Comunichiamo direttamente, sai sempre a che punto siamo.',
-    color: 'bg-logo-light/60',
-    iconColor: 'text-primary',
-    border: 'border-effe-medium/30',
   },
   {
     number: '3',
     icon: Truck,
     title: 'Ricevi il lavoro',
     desc: 'Lavorazione completata e spedita con corriere espresso tracciabile. Consegna nei tempi concordati, sempre.',
-    color: 'bg-logo-light',
-    iconColor: 'text-effe-medium',
-    border: 'border-logo-lime/50',
   },
 ]
 
@@ -138,8 +129,8 @@ export default function HowItWorks() {
                 className="text-center space-y-4"
               >
                 <div className="relative inline-block">
-                  <div className={`w-16 h-16 ${step.color} rounded-2xl flex items-center justify-center mx-auto border ${step.border}`}>
-                    <Icon size={26} className={step.iconColor} />
+                  <div className="w-16 h-16 bg-logo-light/60 rounded-2xl flex items-center justify-center mx-auto border border-effe-medium/30">
+                    <Icon size={26} className="text-primary" />
                   </div>
                   <span className="absolute -top-2 -right-2 w-6 h-6 bg-logo-lime text-primary-dark text-xs font-bold rounded-md flex items-center justify-center">
                     {step.number}

@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
-import { Crown, Layers, Sparkles, Wrench, ScanFace, Stethoscope, Drill, Printer, Gem, Hand, Wind, Home as HomeIcon, ArrowRight, Check, ImageIcon } from 'lucide-react'
+import { Crown, Layers, Sparkles, Wrench, ScanFace, Stethoscope, ArrowRight, Check } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
+import Laboratory from '../components/Laboratory'
+import { aboutImages } from '../data/siteImages'
 
 const services = [
   {
@@ -66,15 +68,6 @@ const services = [
   },
 ]
 
-const equipment = [
-  { icon: Drill, title: 'Fresatura 5 assi', desc: 'ZirkonZahn M2 e M1, a secco e a umido.' },
-  { icon: Printer, title: 'Stampa 3D medicale', desc: 'Resine 385nm e 405nm certificate per uso intraorale.' },
-  { icon: Gem, title: 'Ceramizzazione', desc: 'CZR/Noritake, Ivoclar, Reox e microstratificazione Miyo.' },
-  { icon: Hand, title: 'Lucidatura a mano', desc: 'Finitura artigianale su ogni provvisorio.' },
-  { icon: Wind, title: 'Sabbiatura', desc: 'Ossido di alluminio a 50 e 25 micron.' },
-  { icon: HomeIcon, title: 'Tutto in house', desc: 'Scanner, forni e post-processing sotto lo stesso tetto.' },
-]
-
 export default function Servizi() {
   return (
     <>
@@ -121,70 +114,44 @@ export default function Servizi() {
         </div>
       </section>
 
-      {/* Equipment — dark section like home Laboratory */}
-      <section className="py-20 bg-effe-darker text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14 space-y-3">
-            <span className="inline-block px-3 py-1.5 bg-white/10 text-white/60 text-xs font-semibold rounded-full uppercase tracking-wider">
-              Il laboratorio
-            </span>
-            <h2 className="text-3xl font-bold text-white">Attrezzature e competenze</h2>
-            <p className="text-white/60 max-w-lg mx-auto text-sm">
-              Tecnologia digitale e finitura artigianale, tutto sotto lo stesso tetto.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {equipment.map((e, i) => {
-              const Icon = e.icon
-              return (
-                <motion.div
-                  key={e.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                  className="bg-white/10 rounded-2xl p-6 border border-white/10"
-                >
-                  <div className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center mb-4 border border-white/10">
-                    <Icon size={17} className="text-lime-500" />
-                  </div>
-                  <h3 className="font-semibold text-white mb-2 text-sm">{e.title}</h3>
-                  <p className="text-xs text-white/60 leading-relaxed">{e.desc}</p>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
+      <Laboratory header="centered" theme="light" sectionId={null} className="py-20 bg-white" />
 
       {/* CTA */}
       <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-6 text-center space-y-10">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4"
-          >
-            <h2 className="text-3xl font-bold text-primary-dark leading-tight">Hai un caso da realizzare?</h2>
-            <p className="text-slate-500 leading-relaxed max-w-md mx-auto">Inviaci la scansione: ti rispondiamo con tempi<br className="hidden sm:block" /> e preventivo chiari.</p>
-            <Link
-              to="/contattaci"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-effe-dark transition-colors"
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-4"
             >
-              Richiedi un preventivo
-              <ArrowRight size={15} />
-            </Link>
-          </motion.div>
+              <h2 className="text-3xl font-bold text-primary-dark leading-tight">Hai un caso da realizzare?</h2>
+              <p className="text-slate-500 leading-relaxed max-w-md mx-auto">Inviaci la scansione: ti rispondiamo con tempi<br className="hidden sm:block" /> e preventivo chiari.</p>
+              <Link
+                to="/contattaci"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-effe-dark transition-colors"
+              >
+                Richiedi un preventivo
+                <ArrowRight size={15} />
+              </Link>
+            </motion.div>
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="aspect-[16/9] rounded-3xl bg-gradient-to-br from-logo-light to-logo-lime/30 flex items-center justify-center"
+            className="mt-10 aspect-[5/2] rounded-3xl overflow-hidden"
           >
-            <ImageIcon size={40} className="text-effe-dark/40" />
+            <img
+              src={aboutImages.cta}
+              alt="Laboratorio EFFE2"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </motion.div>
         </div>
       </section>

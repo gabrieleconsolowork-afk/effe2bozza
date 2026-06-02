@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { ImageIcon, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
+import { blogImages } from '../data/siteImages'
 
 const posts = [
   {
@@ -19,13 +20,13 @@ const posts = [
     title: 'Mock-up diagnostico: perché conviene al paziente',
     cat: 'Smile design',
     date: '15 apr 2026',
-    excerpt: 'Mostrare il risultato atteso prima del trattamento migliora la comunicazione e l’accettazione del piano.',
+    excerpt: "Mostrare il risultato atteso prima del trattamento migliora la comunicazione e l'accettazione del piano.",
   },
   {
     title: 'Provvisori fresati e lucidati a mano',
     cat: 'Tecnica',
     date: '2 apr 2026',
-    excerpt: 'Il valore della finitura artigianale anche nell’era della produzione digitale.',
+    excerpt: "Il valore della finitura artigianale anche nell'era della produzione digitale.",
   },
   {
     title: 'Stampa 3D medicale: resine e certificazioni',
@@ -47,7 +48,7 @@ export default function Blog() {
       <PageHeader
         badge="Blog"
         title="Approfondimenti dal laboratorio"
-        subtitle="Tecnica, materiali e workflow digitale raccontati da chi lavora ogni giorno in laboratorio. Articoli dimostrativi in attesa dei contenuti definitivi."
+        subtitle="Tecnica, materiali e workflow digitale raccontati da chi lavora ogni giorno in laboratorio."
       />
 
       <section className="py-20 bg-white">
@@ -60,10 +61,16 @@ export default function Blog() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                className="rounded-2xl border border-slate-200 overflow-hidden bg-white flex flex-col"
+                className="rounded-2xl border border-slate-200 overflow-hidden bg-white flex flex-col group"
               >
-                <div className="aspect-[16/9] w-full bg-gradient-to-br from-logo-light to-logo-lime/30 flex items-center justify-center">
-                  <ImageIcon size={28} className="text-effe-dark/40" />
+                <div className="aspect-[16/9] w-full overflow-hidden">
+                  <img
+                    src={blogImages[p.title]}
+                    alt={p.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
                   <div className="flex items-center gap-2 text-xs mb-2">
@@ -74,7 +81,7 @@ export default function Blog() {
                   <h3 className="font-semibold text-primary-dark mb-2 leading-snug">{p.title}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed mb-4">{p.excerpt}</p>
                   <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary mt-auto">
-                    Leggi l’articolo
+                    Leggi l'articolo
                     <ArrowRight size={14} />
                   </span>
                 </div>

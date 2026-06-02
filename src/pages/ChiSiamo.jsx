@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import { ImageIcon, Heart, Gem, Clock, MessageCircle, ArrowRight } from 'lucide-react'
+import { Heart, Gem, Clock, MessageCircle, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
+import { aboutImages } from '../data/siteImages'
 
 const values = [
   { icon: Heart, title: 'Cura artigianale', desc: 'Ogni manufatto è seguito a mano, con l’attenzione di chi ama il proprio mestiere.' },
@@ -15,12 +16,6 @@ const stats = [
   { value: '1998', label: 'Anno di fondazione' },
   { value: '6', label: 'Professionisti' },
   { value: '100%', label: 'Lavori controllati' },
-]
-
-const team = [
-  { name: 'Davide Fuso', role: 'Titolare e odontotecnico' },
-  { name: 'Team CAD/CAM', role: 'Progettazione e fresatura' },
-  { name: 'Team ceramica', role: 'Stratificazione ed estetica' },
 ]
 
 export default function ChiSiamo() {
@@ -40,9 +35,15 @@ export default function ChiSiamo() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-logo-light to-logo-lime/30 flex items-center justify-center"
+            className="aspect-[4/3] rounded-3xl overflow-hidden"
           >
-            <ImageIcon size={40} className="text-effe-dark/40" />
+            <img
+              src={aboutImages.story}
+              alt="Interno del laboratorio EFFE2"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -114,64 +115,42 @@ export default function ChiSiamo() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14 space-y-3">
-            <h2 className="text-3xl font-bold text-primary-dark">Il team</h2>
-            <p className="text-slate-500 max-w-lg mx-auto text-sm">Le persone che danno forma ai tuoi lavori.</p>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {team.map((m, i) => (
-              <motion.div
-                key={m.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="rounded-2xl border border-slate-200 overflow-hidden bg-white"
-              >
-                <div className="aspect-square w-full bg-gradient-to-br from-logo-light to-logo-lime/30 flex items-center justify-center">
-                  <ImageIcon size={32} className="text-effe-dark/40" />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-primary-dark">{m.name}</h3>
-                  <p className="text-sm text-slate-500">{m.role}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-6 text-center space-y-10">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4"
-          >
-            <h2 className="text-3xl font-bold text-primary-dark leading-tight">Vuoi conoscerci meglio?</h2>
-            <p className="text-slate-500 leading-relaxed max-w-md mx-auto">Raccontaci di cosa hai bisogno: troviamo insieme la soluzione giusta.</p>
-            <Link
-              to="/contattaci"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-effe-dark transition-colors"
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-4"
             >
-              Contattaci
-              <ArrowRight size={15} />
-            </Link>
-          </motion.div>
+              <h2 className="text-3xl font-bold text-primary-dark leading-tight">Vuoi conoscerci meglio?</h2>
+              <p className="text-slate-500 leading-relaxed max-w-md mx-auto">Raccontaci di cosa hai bisogno: troviamo insieme la soluzione giusta.</p>
+              <Link
+                to="/contattaci"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-effe-dark transition-colors"
+              >
+                Contattaci
+                <ArrowRight size={15} />
+              </Link>
+            </motion.div>
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="aspect-[16/9] rounded-3xl bg-gradient-to-br from-logo-light to-logo-lime/30 flex items-center justify-center"
+            className="mt-10 aspect-[5/2] rounded-3xl overflow-hidden"
           >
-            <ImageIcon size={40} className="text-effe-dark/40" />
+            <img
+              src={aboutImages.cta}
+              alt="Laboratorio EFFE2"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </motion.div>
         </div>
       </section>

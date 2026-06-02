@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ScanFace, SlidersHorizontal, Download } from 'lucide-react'
+import imgPrima from '../assets/smile-design/prima.png'
+import imgDopo from '../assets/smile-design/dopo.png'
 
 const smileFeatures = [
   {
@@ -30,45 +32,52 @@ function SliderDemo() {
   const [pos, setPos] = useState(50)
 
   return (
-    <div className="relative w-full aspect-[16/9] md:aspect-auto md:h-full min-h-[240px] rounded-2xl overflow-hidden bg-slate-200 select-none border border-slate-200">
-      {/* After (right side) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-logo-light to-logo-lime/30 flex items-center justify-center">
-        <div className="text-center space-y-2">
-          <div className="w-16 h-16 mx-auto bg-logo-light rounded-full flex items-center justify-center text-2xl border border-logo-lime/40">🦷</div>
-          <p className="text-sm font-semibold text-primary">Dopo il trattamento</p>
-        </div>
-        <span className="absolute top-3 right-3 px-2.5 py-1 bg-white/80 backdrop-blur-sm text-xs font-semibold text-slate-700 rounded-full">Dopo</span>
-      </div>
+    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 select-none border border-slate-200 shadow-sm">
+      {/* Dopo (full frame) */}
+      <img
+        src={imgDopo}
+        alt="Dopo il trattamento"
+        className="absolute inset-0 w-full h-full object-cover object-center scale-x-[-1]"
+        draggable={false}
+      />
+      <span className="absolute top-3 right-3 px-2.5 py-1 bg-black/50 backdrop-blur-sm text-xs font-semibold text-white rounded-full z-10">
+        Dopo
+      </span>
 
-      {/* Before (left side, clipped) */}
+      {/* Prima (clipped left side) */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center overflow-hidden"
+        className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
       >
-        <div className="text-center space-y-2">
-          <div className="w-16 h-16 mx-auto bg-slate-300 rounded-full flex items-center justify-center text-2xl">😊</div>
-          <p className="text-sm font-semibold text-slate-600">Prima del trattamento</p>
-        </div>
-        <span className="absolute top-3 left-3 px-2.5 py-1 bg-white/80 backdrop-blur-sm text-xs font-semibold text-slate-700 rounded-full">Prima</span>
+        <img
+          src={imgPrima}
+          alt="Prima del trattamento"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-x-[-1]"
+          draggable={false}
+        />
+        <span className="absolute top-3 left-3 px-2.5 py-1 bg-black/50 backdrop-blur-sm text-xs font-semibold text-white rounded-full">
+          Prima
+        </span>
       </div>
 
-      {/* Divider */}
+      {/* Divider handle */}
       <div
-        className="absolute inset-y-0 flex items-center justify-center z-10"
+        className="absolute inset-y-0 flex items-center justify-center z-10 pointer-events-none"
         style={{ left: `${pos}%`, transform: 'translateX(-50%)' }}
       >
-        <div className="w-0.5 h-full bg-white" />
-        <div className="absolute w-8 h-8 bg-white rounded-full flex items-center justify-center cursor-ew-resize border border-slate-200">
-          <span className="text-slate-500 text-xs font-bold">⟺</span>
+        <div className="w-0.5 h-full bg-white/90 shadow-sm" />
+        <div className="absolute w-9 h-9 bg-white rounded-full flex items-center justify-center border border-slate-200 shadow-md">
+          <span className="text-slate-500 text-[10px] font-bold tracking-tighter">⟺</span>
         </div>
       </div>
 
-      {/* Drag range input */}
       <input
         type="range"
-        min={5} max={95}
+        min={5}
+        max={95}
         value={pos}
         onChange={(e) => setPos(Number(e.target.value))}
+        aria-label="Confronto prima e dopo"
         className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
       />
     </div>

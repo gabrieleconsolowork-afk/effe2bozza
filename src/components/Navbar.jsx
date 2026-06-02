@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import Logo from './Logo'
 
 const links = [
   { label: 'Home', to: '/#home' },
@@ -28,11 +29,7 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/#home" className="flex items-center gap-2.5 font-bold text-lg text-primary-dark">
-          <span className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white text-sm font-black">E2</span>
-          <span>EFFE2</span>
-        </Link>
+        <Logo header />
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">

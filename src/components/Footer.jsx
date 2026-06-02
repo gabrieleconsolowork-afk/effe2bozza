@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Logo from './Logo'
 
 const nav = {
   Pagine: [
@@ -33,10 +34,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1 space-y-4">
-            <Link to="/#home" className="flex items-center gap-2 font-bold text-base text-white">
-              <span className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white text-sm font-black">E2</span>
-              EFFE2
-            </Link>
+            <Logo light showText size="sm" />
             <p className="text-sm text-white/60 leading-relaxed">Laboratorio Odontotecnico</p>
             <a href="mailto:effe2snc@gmail.com" className="block text-sm text-white/60 hover:text-white transition-colors duration-300 ease-in-out">
               effe2snc@gmail.com
