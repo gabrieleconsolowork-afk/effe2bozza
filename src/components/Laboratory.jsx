@@ -47,52 +47,49 @@ const themes = {
 function LabCard({ item, width, fadeIn, fadeOut, theme = 'dark' }) {
   const Icon = item.icon
   const t = themes[theme]
-  const content = (
-    <div className={t.card} style={cardShellStyle}>
-      <div
-        className="aspect-[4/3] w-full overflow-hidden shrink-0"
-        style={{ borderRadius: 'var(--img-radius)' }}
-      >
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <div className="pt-4 flex flex-col flex-1">
-        <div className="mb-4">
-          <div className={t.iconBox}>
-            <Icon size={17} className={t.icon} />
-          </div>
-        </div>
-        <h3 className={t.title}>{item.title}</h3>
-        <p className={t.desc}>{item.desc}</p>
-      </div>
-    </div>
-  )
 
+  // Usa sempre motion.div con keyframe array: evita il ciclo mount/unmount
+  // del rendering condizionale che impediva a Framer Motion di applicare
+  // initial in modo affidabile. I keyframe [da, a] forzano l'animazione
+  // indipendentemente dallo stato precedente dell'elemento.
   return (
     <div className="shrink-0 self-stretch" style={{ width }}>
-      {fadeIn || fadeOut ? (
-        <motion.div
-          className="h-full origin-center"
-          initial={{
-            opacity: fadeIn ? 0 : 1,
-            scale: fadeIn ? ENTER_SCALE : 1,
-          }}
-          animate={{
-            opacity: fadeOut ? 0 : 1,
-            scale: fadeOut ? ENTER_SCALE : 1,
-          }}
-          transition={{ duration: SLIDE_MS, ease: 'easeInOut' }}
-        >
-          {content}
-        </motion.div>
-      ) : (
-        content
-      )}
+      <motion.div
+        className="h-full origin-center"
+        animate={{
+          opacity: fadeIn ? [0, 1] : fadeOut ? [1, 0] : 1,
+          scale:   fadeIn ? [ENTER_SCALE, 1] : fadeOut ? [1, ENTER_SCALE] : 1,
+        }}
+        transition={
+          fadeIn || fadeOut
+            ? { duration: SLIDE_MS, ease: 'easeInOut' }
+            : { duration: 0 }
+        }
+      >
+        <div className={t.card} style={cardShellStyle}>
+          <div
+            className="aspect-[4/3] w-full overflow-hidden shrink-0"
+            style={{ borderRadius: 'var(--img-radius)' }}
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div className="pt-4 flex flex-col flex-1">
+            <div className="mb-4">
+              <div className={t.iconBox}>
+                <Icon size={17} className={t.icon} />
+              </div>
+            </div>
+            <h3 className={t.title}>{item.title}</h3>
+            <p className={t.desc}>{item.desc}</p>
+          </div>
+        </div>
+      </motion.div>
     </div>
   )
 }
