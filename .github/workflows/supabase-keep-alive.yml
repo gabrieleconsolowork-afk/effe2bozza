@@ -1,0 +1,28 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Ogni 4 giorni alle 08:00 UTC (evita la pausa automatica dopo 7 giorni)
+    - cron: '0 8 */4 * *'
+  workflow_dispatch: # consente di avviarlo manualmente dalla UI di GitHub
+
+jobs:
+  ping:
+    name: Ping Supabase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Supabase REST API
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/contact_requests?select=id&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}")
+
+          echo "HTTP status: $STATUS"
+
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 300 ]; then
+            echo "Supabase è attivo e risponde correttamente."
+          else
+            echo "ATTENZIONE: Supabase ha risposto con status $STATUS"
+            exit 1
+          fi
