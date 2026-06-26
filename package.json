@@ -1,0 +1,41 @@
+{
+  "name": "effe2-sito",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/generate-sitemap.mjs && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "setup:supabase": "node scripts/setup-supabase.mjs",
+    "fix:rls": "node scripts/fix-rls.mjs",
+    "deploy:contact-function": "node scripts/deploy-contact-function.mjs",
+    "generate:assets": "node scripts/generate-sitemap.mjs",
+    "generate:favicons": "node scripts/generate-favicon.mjs --png"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@supabase/supabase-js": "^2.49.8",
+    "framer-motion": "^12.38.0",
+    "lenis": "^1.3.23",
+    "lucide-react": "^1.16.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.16.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "playwright": "^1.49.1",
+    "tailwindcss": "^4.3.0",
+    "vite": "^8.0.12"
+  }
+}

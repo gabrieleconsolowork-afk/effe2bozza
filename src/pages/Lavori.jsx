@@ -1,0 +1,69 @@
+import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import PageHeader from '../components/PageHeader'
+import { portfolioImages } from '../data/siteImages'
+
+const works = [
+  { title: 'Full arch in zirconia', cat: 'Protesi fissa' },
+  { title: 'Corona singola anteriore', cat: 'Estetica' },
+  { title: 'Ponte 3 elementi', cat: 'Protesi fissa' },
+  { title: 'Provvisorio fresato', cat: 'Provvisori' },
+  { title: 'Faccette in ceramica', cat: 'Estetica' },
+  { title: 'Scheletrato combinato', cat: 'Protesi rimovibile' },
+  { title: 'Toronto su impianti', cat: 'Implantologia' },
+  { title: 'Intarsi e onlay', cat: 'Conservativa' },
+  { title: 'Mock-up diagnostico', cat: 'Smile design' },
+]
+
+export default function Lavori() {
+  return (
+    <>
+      <PageHeader
+        badge="Portfolio"
+        title="I nostri lavori"
+        subtitle="Una selezione di manufatti realizzati nel nostro laboratorio: protesi fisse, estetica, implantologia e smile design."
+      />
+
+      <section className="py-20 bg-white">
+        <div className="site-container">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {works.map((w, i) => (
+              <motion.div
+                key={w.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
+                className="rounded-2xl border border-border overflow-hidden bg-white group"
+              >
+                <div className="aspect-[4/3] w-full overflow-hidden">
+                  <img
+                    src={portfolioImages[w.title]}
+                    alt={w.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="text-xs font-semibold text-primary uppercase tracking-wider">{w.cat}</span>
+                  <h3 className="font-semibold text-primary-dark mt-1">{w.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-16">
+            <a
+              href="mailto:effe2snc@gmail.com"
+              className="group inline-flex cursor-pointer items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-effe-dark transition-colors"
+            >
+              Richiedi un preventivo
+              <ArrowRight size={15} className="btn-arrow-icon" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
