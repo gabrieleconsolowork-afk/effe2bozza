@@ -158,7 +158,16 @@ export default function Laboratory({ sectionId = 'chi-siamo', header = 'split', 
   const trackIndexRef = useRef(0)
   const [instant, setInstant] = useState(false)
   const [paused, setPaused] = useState(false)
-  const [cardWidth, setCardWidth] = useState(0)
+  // Stima iniziale basata sul viewport per evitare il flash vuoto
+  // al primo carico (viene corretta dal ResizeObserver al primo paint)
+  const [cardWidth, setCardWidth] = useState(() => {
+    if (typeof window === 'undefined') return 0
+    const visible = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1
+    const containerPad = 48 // site-container padding-inline * 2
+    const innerPad = window.innerWidth >= 1024 ? 80 : window.innerWidth >= 640 ? 64 : 40
+    const containerW = Math.min(1392, window.innerWidth - containerPad) - innerPad * 2
+    return Math.max(0, (containerW - GAP * (visible - 1)) / visible)
+  })
   const [fadeEnterKey, setFadeEnterKey] = useState(null)
   const [fadeExitKey, setFadeExitKey] = useState(null)
   const fadeTimerRef = useRef(null)
@@ -199,30 +208,43 @@ export default function Laboratory({ sectionId = 'chi-siamo', header = 'split', 
       const el = containerRef.current
       if (!el) return
       const w = (el.offsetWidth - GAP * (visibleCount - 1)) / visibleCount
-      setCardWidth(w)
+      // Non sovrascrivere con 0: il layout potrebbe non essere ancora completato
+      if (w > 0) setCardWidth(w)
     }
-    update()
+
+    // Doppio RAF: aspetta che il browser completi il paint e il layout
+    // prima di misurare (fix per il primo carico, quando CSS/font non sono settled)
+    let raf2 = null
+    const raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(update)
+    })
+
     const ro = new ResizeObserver(update)
     if (containerRef.current) ro.observe(containerRef.current)
     window.addEventListener('resize', update)
     return () => {
+      cancelAnimationFrame(raf1)
+      if (raf2) cancelAnimationFrame(raf2)
       ro.disconnect()
       window.removeEventListener('resize', update)
     }
   }, [visibleCount])
 
   const goNext = useCallback(() => {
+    // Legge l'indice corrente dal ref (evita stale closure)
+    // e chiama mark* FUORI dall'updater: garantisce che fade e slide
+    // partano nello stesso batch di render
+    const prev = trackIndexRef.current
+    const next = prev + 1
+    markEntering(next + visibleCount - 1)
+    markExiting(prev)
     setInstant(false)
-    setTrackIndex((prev) => {
-      const next = prev + 1
-      markEntering(next + visibleCount - 1)
-      markExiting(prev)
-      return next
-    })
+    setTrackIndex(next)
   }, [visibleCount, markEntering, markExiting])
 
   const goPrev = useCallback(() => {
-    if (trackIndex === 0) {
+    const current = trackIndexRef.current
+    if (current === 0) {
       setInstant(true)
       setFadeEnterKey(null)
       setFadeExitKey(null)
@@ -234,23 +256,25 @@ export default function Laboratory({ sectionId = 'chi-siamo', header = 'split', 
         })
       })
     } else {
-      setInstant(false)
-      const prev = trackIndex - 1
+      const prev = current - 1
       markEntering(prev)
-      markExiting(trackIndex + visibleCount - 1)
+      markExiting(current + visibleCount - 1)
+      setInstant(false)
       setTrackIndex(prev)
     }
-  }, [trackIndex, visibleCount, markEntering, markExiting])
+  }, [visibleCount, markEntering, markExiting])
 
   const handleAnimationComplete = useCallback(() => {
-    clearFadeKeys()
+    // NON pulire i fade qui: la slide (700ms) completa prima che le card
+    // abbiano finito di animare (anche 700ms ma partono un render dopo).
+    // Il timer in markEntering (1000ms) ci pensa lui con il buffer giusto.
     const currentIndex = trackIndexRef.current
     if (currentIndex >= items.length) {
       setInstant(true)
       setTrackIndex(currentIndex - items.length)
       requestAnimationFrame(() => setInstant(false))
     }
-  }, [clearFadeKeys])
+  }, [])
 
   useEffect(() => {
     if (paused) return
